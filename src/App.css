@@ -1,0 +1,41 @@
+/* App.css */
+
+/* Import all of Tailwind (replaces @tailwind base/components/utilities in v3) */
+@import "tailwindcss";
+
+.app {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.board {
+  display: inline-block;
+  margin: 20px auto;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hud {
+  margin: 10px 0;
+}
+
+.win {
+  color: green;
+  font-size: 20px;
+}
+
+.lose {
+  color: red;
+  font-size: 20px;
+}
