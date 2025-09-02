@@ -16,7 +16,6 @@ const App: React.FC = () => {
     "start" | "playing" | "win" | "lose"
   >("start");
 
-  // Start a new game
   const startGame = () => {
     const newGrid = placeShips(createGrid(rows, cols), initialShips);
     setGrid(newGrid);
@@ -26,7 +25,6 @@ const App: React.FC = () => {
     setGameState("playing");
   };
 
-  // Handle firing
   const fire = (x: number, y: number) => {
     if (gameState !== "playing") return;
 
@@ -49,11 +47,9 @@ const App: React.FC = () => {
         newGrid[x][y] = 998;
       }
 
-      // update ships left
       const remaining = newGrid.flat().filter((v) => v < 0).length;
       setShipsLeft(remaining);
 
-      // check win condition
       if (remaining === 0) setGameState("win");
 
       return newGrid;
@@ -69,14 +65,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-900 to-black text-white p-4">
-      <h1 className="text-4xl font-bold mb-6">Battleship</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 text-white bg-gradient-to-b from-blue-900 to-black">
+      <h1 className="mb-6 text-4xl font-bold">Battleship</h1>
 
       {gameState === "start" && (
-        <div className="flex flex-col items-center bg-blue-700 p-6 rounded-xl shadow-lg space-y-4">
-          <h2 className="text-3xl font-bold mb-2">🚢 Setup Game</h2>
+        <div className="flex flex-col items-center p-6 space-y-4 bg-blue-700 shadow-lg rounded-xl">
+          <h2 className="mb-2 text-3xl font-bold">🚢 Setup Game</h2>
 
-          {/* Grid Size Selector */}
           <div className="flex flex-col items-center">
             <label className="mb-1">Grid Size (NxN)</label>
             <select
@@ -86,7 +81,7 @@ const App: React.FC = () => {
                 setRows(size);
                 setCols(size);
               }}
-              className="text-white p-2 rounded"
+              className="p-2 text-white rounded"
               style={{ backgroundColor: "blue" }}
             >
               <option value={5}>5 x 5</option>
@@ -95,7 +90,6 @@ const App: React.FC = () => {
             </select>
           </div>
 
-          {/* Ship Count Selector */}
           <div className="flex flex-col items-center">
             <label className="mb-1">Number of Ships</label>
             <input
@@ -104,19 +98,18 @@ const App: React.FC = () => {
               min={1}
               max={rows * cols - 1}
               onChange={(e) => setInitialShips(parseInt(e.target.value))}
-              className="text-white p-2 rounded w-20 text-center"
+              className="w-20 p-2 text-center text-white rounded"
               style={{ backgroundColor: "blue" }}
             />
           </div>
 
-          {/* Ammo Preview */}
           <p className="mt-2">
             Ammo will be <b>{(rows * cols - 1) / 2}</b>
           </p>
 
           <button
             onClick={startGame}
-            className="px-6 py-2 bg-white text-blue-700 font-bold rounded-lg hover:bg-gray-200"
+            className="px-6 py-2 font-bold text-blue-700 bg-white rounded-lg hover:bg-gray-200"
           >
             Start Game
           </button>
@@ -131,12 +124,12 @@ const App: React.FC = () => {
       )}
 
       {gameState === "win" && (
-        <div className="flex flex-col items-center bg-green-700 p-6 rounded-xl shadow-lg">
-          <h2 className="text-3xl font-bold mb-4">🎉 You Win!</h2>
+        <div className="flex flex-col items-center p-6 bg-green-700 shadow-lg rounded-xl">
+          <h2 className="mb-4 text-3xl font-bold">🎉 You Win!</h2>
           <p className="mb-4">All ships destroyed in {turns} turns.</p>
           <button
             onClick={() => setGameState("start")}
-            className="px-6 py-2 bg-white text-green-700 font-bold rounded-lg hover:bg-gray-200"
+            className="px-6 py-2 font-bold text-green-700 bg-white rounded-lg hover:bg-gray-200"
           >
             Play Again
           </button>
@@ -144,12 +137,12 @@ const App: React.FC = () => {
       )}
 
       {gameState === "lose" && (
-        <div className="flex flex-col items-center bg-red-700 p-6 rounded-xl shadow-lg">
-          <h2 className="text-3xl font-bold mb-4">💥 Game Over!</h2>
+        <div className="flex flex-col items-center p-6 bg-red-700 shadow-lg rounded-xl">
+          <h2 className="mb-4 text-3xl font-bold">💥 Game Over!</h2>
           <p className="mb-4">You ran out of ammo.</p>
           <button
             onClick={() => setGameState("start")}
-            className="px-6 py-2 bg-white text-red-700 font-bold rounded-lg hover:bg-gray-200"
+            className="px-6 py-2 font-bold text-red-700 bg-white rounded-lg hover:bg-gray-200"
           >
             Try Again
           </button>

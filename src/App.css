@@ -1,6 +1,3 @@
-/* App.css */
-
-/* Import all of Tailwind (replaces @tailwind base/components/utilities in v3) */
 @import "tailwindcss";
 
 .app {

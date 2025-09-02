@@ -1,9 +1,7 @@
-// Create empty grid
 export const createGrid = (rows: number, cols: number): number[][] => {
   return Array.from({ length: rows }, () => Array(cols).fill(0));
 };
 
-// Place ships randomly
 export const placeShips = (grid: number[][], numShips: number): number[][] => {
   const newGrid = grid.map((row) => [...row]);
   const rows = newGrid.length;
@@ -18,7 +16,7 @@ export const placeShips = (grid: number[][], numShips: number): number[][] => {
       newGrid[x][y] === 0 &&
       !(x === Math.floor(rows / 2) && y === Math.floor(cols / 2))
     ) {
-      newGrid[x][y] = -(placed + 1); // Negative = ship
+      newGrid[x][y] = -(placed + 1);
       placed++;
     }
   }

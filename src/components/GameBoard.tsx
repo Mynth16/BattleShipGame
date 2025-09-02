@@ -1,4 +1,3 @@
-// src/components/GameBoard.tsx
 import React from "react";
 import Cell from "./Cell";
 
@@ -12,7 +11,7 @@ interface GameBoardProps {
 const GameBoard: React.FC<GameBoardProps> = ({ grid, fire, rows, cols }) => {
   return (
     <div
-      className="gap-1 border-4 border-blue-400 p-2 rounded-lg bg-blue-900"
+      className="gap-1 p-2 bg-blue-900 border-4 border-blue-400 rounded-lg"
       style={{
         display: "grid",
         gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,

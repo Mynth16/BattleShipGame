@@ -1,4 +1,3 @@
-// src/components/Cell.tsx
 import React from "react";
 
 interface CellProps {
