@@ -11,7 +11,15 @@ const Row: React.FC<RowProps> = ({ row, rowIndex, fire }) => {
   return (
     <div className="row">
       {row.map((cell, j) => (
-        <Cell key={j} value={cell} x={rowIndex} y={j} fire={fire} />
+        <Cell
+          key={j}
+          value={cell}
+          x={rowIndex}
+          y={j}
+          fire={fire}
+          rows={0}
+          cols={0}
+        />
       ))}
     </div>
   );

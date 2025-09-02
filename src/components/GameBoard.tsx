@@ -1,6 +1,5 @@
 // src/components/GameBoard.tsx
 import React from "react";
-import Row from "./Row";
 import Cell from "./Cell";
 
 interface GameBoardProps {
